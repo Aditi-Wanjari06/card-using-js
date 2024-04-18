@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        body {
+            background-color: #f7f6f6;
+        }
+
+        .product-card {
+            background-color: #fff;
+            width: 200px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 30px auto;
+            padding: 3px;
+        }
+
+        .bag-img {
+            height: 100px;
+            display: block;
+            margin: 5px auto;
+            border-radius: 20px;
+            background-image: linear-gradient(135deg, #FEB692 10%, #EA5455 100%);
+            padding: 10px 40px;
+        }
+
+        .card-body {
+            margin-left: 10px;
+        }
+
+        .product-title {
+            font-size: 20px;
+        }
+
+        .product-discription {
+            font-size: 12px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .btn-buy-now {
+            background-image: linear-gradient(135deg, #FEB692 10%, #EA5455 100%);
+            border: none;
+            color: white;
+            border-radius: 20px;
+            padding: 5px 20px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .quantity-btn-conatiner {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .btn-quantity {
+            height: 25px;
+        }
+
+        .quantity-text {
+            font-size: 25px;
+            margin: auto 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-card">
+        <img src="bag-removebg-preview.png" class="bag-img" />
+        <div class="card-body">
+            <h1 class="product-title">
+                Leather Bag
+            </h1>
+            <p class="product-discription">Simple and stylish leather bag. Perfect for carrying essentials.</p>
+            <p class="product-price">
+                ₹ 399/-
+            </p>
+            <p id="show-quantity">1 x 399</p>
+            <p id="show-total">Total : 399</p>
+            <div class="quantity-btn-conatiner">
+                <img src="minus (1).png" alt="" class="btn-quantity" onclick="dec()">
+                <span class="quantity-text" id="quantity-text">1</span>
+                <img src="add.png" alt="" class="btn-quantity" onclick="inc()">
+
+            </div>
+        </div>
+
+             <div>
+                <button type="button" class="btn-buy-now">Buy Now</button>
+             </div>
+            
+    </div>
+    <script>
+
+        //   const quantityText = document.getElementById('quantity-text');
+        //     const showQuantity = document.getElementById('show-quantity');
+        //     const showTotal = document.getElementById('show-total');
+
+
+        function inc() {
+            const quantityText = document.getElementById('quantity-text');
+            const showQuantity = document.getElementById('show-quantity');
+            const showTotal = document.getElementById('show-total');
+           let quantity = parseInt(quantityText.innerText);
+
+            if (quantity < 10) {
+                quantityText.innerText = ++quantity;
+            }
+            else {
+                alert("Your bucket is full")
+            }
+            showQuantity.innerText = `${quantity} x 399`;
+            showTotal.innerText = `Total: ${quantity * 399}`;
+        }
+
+
+
+        function dec() {
+            const quantityText = document.getElementById('quantity-text');
+            const showQuantity = document.getElementById('show-quantity');
+            const showTotal = document.getElementById('show-total');
+            let quantity = parseInt(quantityText.innerText);
+
+            if (quantity > 1) {
+                quantityText.innerText = --quantity;
+            }
+            else {
+                alert("Your bucket is empty")
+            }
+
+            showQuantity.innerText = `${quantity} x 399`;
+            showTotal.innerText = `Total: ${quantity * 399}`;
+        }
+
+        //  function showTotalAmount(quantity){
+        //     showQuantity.innerText = `${quantity} x 399`;
+        //     showTotal.innerText = `Total: ${quantity * 399}`;
+        //  }
+    </script>
+
+</body>
+
+</html>
